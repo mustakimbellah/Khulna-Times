@@ -7,42 +7,30 @@ const loadAllNews = async () => {
             throw error;
         });
 };
-
-
 const displayCatagories = async (catagories) => {
-    //console.log(loadAllNews()); 
-
     toggleSpinner(true);
 
     const catagoriesContainer = document.getElementById('all-menu');
     for (const menu of catagories) {
-        //console.log(menu);
-
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
             <div onclick="newsMenu(${menu.category_id})">${menu.category_name}</div>
         `;
-
         catagoriesContainer.appendChild(div);
     }
 
     toggleSpinner(false);
 };
-//newsMenu(1);
 function newsMenu(category_id) {
     let url = `https://openapi.programming-hero.com/api/news/category/${"0" + category_id}`;
-
     fetch(url)
         .then(res => res.json())
         .then(data => displayNews(data.data));
 }
-
 function displayNews(data) {
-
     toggleSpinner(true);
     document.getElementById('item-catagory').innerText = data.length ? data.length : 'No';
-
     const detailsNews = document.getElementById('all-news');
     detailsNews.innerHTML = '';
     data.forEach((element) => {
@@ -61,18 +49,18 @@ function displayNews(data) {
 
                                 <div class = 'd-flex justify-content-between align-items-center'>
                                 <div><span class = 'me-3' > <img src="${element.author.img}" class="rounded-circle" style = 'width:50px'alt=""> </span>
-                                <span>${element.author.name ? element.author.name : "No Name"}</span></div>
+                                <span>${element.author.name ? element.author.name : "No Data Found"}</span></div>
 
                                 <div>
-                                <i class="fa-regular fa-eye"></i>View:  ${element.total_view}
-                                </div>
+                                <i class="fa-regular fa-eye"></i>View:  ${element.total_view ? element.total_view : "No Data Found"}
+                                </div >
                                 <div>
-                                <button onclick="showAllDetails('${element._id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Detail</button>
+                                    <button onclick="showAllDetails('${element._id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Detail</button>
                                 </div>
-                            </div>
-                        </div>
-                    </div> 
-                `;
+                            </div >
+                        </div >
+                    </div >
+            `;
 
         detailsNews.appendChild(div);
     });
@@ -82,14 +70,12 @@ function displayNews(data) {
 
 function showAllDetails(news_id) {
     let url = `https://openapi.programming-hero.com/api/news/${news_id}`
-    // console.log(url);
     fetch(url)
         .then(res => res.json())
         .then(data => display(data.data))
 }
 
 function display(data) {
-    //let modalBody = document.getElementById("exampleModal")
     let exampleModalLabel = document.getElementById("exampleModalLabel")
     exampleModalLabel.textContent = " "
     data.forEach(event => {
@@ -102,15 +88,13 @@ function display(data) {
                 <img src ="${thumbnail_url}"/>
                 </div>
                 <p>Details: ${details}</p>
-                <h5 class="text-primary">Author Name : ${author.name ? author.name : "No Data Avaiable"}</h5>
-                <p class="text-primary">View: ${total_view ? total_view : "No Data Avaiable"}</p>
-                
-      `;
+                <h5 class="text-primary">Author Name : ${author.name ? author.name : "No Data Available"}</h5>
+                <p class="text-primary">View: ${total_view ? total_view : "No Data Available"}</p>
+        `;
         exampleModalLabel.appendChild(div);
     });
     //toggleSpinner(false);
 }
-//<h2 class="card-title">${title}</h5>
 
 const toggleSpinner = (isLoading) => {
     const loaderSection = document.getElementById('loader');
