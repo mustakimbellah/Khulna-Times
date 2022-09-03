@@ -8,8 +8,11 @@ const loadAllNews = async () => {
         });
 };
 
+
 const displayCatagories = async (catagories) => {
     //console.log(loadAllNews()); 
+
+    //toggleSpinner(true);
 
     const catagoriesContainer = document.getElementById('all-menu');
     for (const menu of catagories) {
@@ -23,20 +26,29 @@ const displayCatagories = async (catagories) => {
 
         catagoriesContainer.appendChild(div);
     }
-};
 
+    //toggleSpinner(false);
+};
+//newsMenu(1);
 function newsMenu(category_id) {
     let url = `https://openapi.programming-hero.com/api/news/category/${"0" + category_id}`;
 
     fetch(url)
         .then(res => res.json())
         .then(data => displayNews(data.data));
+    //console.log(data.data[0].length);
 }
 
 function displayNews(data) {
 
+    //console.log(data.length);
+
+    document.getElementById('item-catagory').innerText = data.length ? data.length : 'No';
+
+    // toggleSpinner(true);
+
     const detailsNews = document.getElementById('all-news');
-    detailsNews.textContent = '';
+    detailsNews.innerHTML = '';
     data.forEach((element) => {
         console.log(element);
         const div = document.createElement('div');
@@ -56,7 +68,7 @@ function displayNews(data) {
                                 <span>${element.author.name ? element.author.name : "No Name"}</span></div>
 
                                 <div>
-                                <i class="fa-solid fa-eye me-2"></i> View: ${element.total_view}
+                                <i class="fa-regular fa-eye"></i>View:  ${element.total_view}
                                 </div>
                                 <div>
                                 <button onclick="showAllDetails('${element._id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Detail</button>
@@ -68,6 +80,8 @@ function displayNews(data) {
 
         detailsNews.appendChild(div);
     });
+
+    //toggleSpinner(false);
 }
 
 function showAllDetails(news_id) {
@@ -92,8 +106,8 @@ function display(data) {
                 <img src ="${thumbnail_url}"/>
                 </div>
                 <p>Details: ${details}</p>
-                <h5 class="text-primary">Author Name : ${author.name ? author.name : "No Name"}</h5>
-                <p class="text-primary">View: ${total_view}</p>
+                <h5 class="text-primary">Author Name : ${author.name ? author.name : "No Data Avaiable"}</h5>
+                <p class="text-primary">View: ${total_view ? total_view : "No Data Avaiable"}</p>
                 
       `;
         exampleModalLabel.appendChild(div)
@@ -101,8 +115,22 @@ function display(data) {
 }
 //<h2 class="card-title">${title}</h5>
 
+const toggleSpinner = (isLoading) => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none');
+    }
+    else {
+        loaderSection.classList.add('d-none');
+    }
+};
+
+
+
+
+
 //displayNews();
 //newsMenu();
 loadAllNews();
-showAllDetails();
-displayNews();
+//showAllDetails();
+//displayNews();
