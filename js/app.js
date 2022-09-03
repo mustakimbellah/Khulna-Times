@@ -12,7 +12,7 @@ const loadAllNews = async () => {
 const displayCatagories = async (catagories) => {
     //console.log(loadAllNews()); 
 
-    //toggleSpinner(true);
+    toggleSpinner(true);
 
     const catagoriesContainer = document.getElementById('all-menu');
     for (const menu of catagories) {
@@ -27,7 +27,7 @@ const displayCatagories = async (catagories) => {
         catagoriesContainer.appendChild(div);
     }
 
-    //toggleSpinner(false);
+    toggleSpinner(false);
 };
 //newsMenu(1);
 function newsMenu(category_id) {
@@ -36,16 +36,14 @@ function newsMenu(category_id) {
     fetch(url)
         .then(res => res.json())
         .then(data => displayNews(data.data));
-    //console.log(data.data[0].length);
 }
 
 function displayNews(data) {
 
-    //console.log(data.length);
-
+    toggleSpinner(true);
     document.getElementById('item-catagory').innerText = data.length ? data.length : 'No';
 
-    // toggleSpinner(true);
+
 
     const detailsNews = document.getElementById('all-news');
     detailsNews.innerHTML = '';
@@ -81,7 +79,7 @@ function displayNews(data) {
         detailsNews.appendChild(div);
     });
 
-    //toggleSpinner(false);
+    toggleSpinner(false);
 }
 
 function showAllDetails(news_id) {
@@ -110,8 +108,9 @@ function display(data) {
                 <p class="text-primary">View: ${total_view ? total_view : "No Data Avaiable"}</p>
                 
       `;
-        exampleModalLabel.appendChild(div)
-    })
+        exampleModalLabel.appendChild(div);
+    });
+    //toggleSpinner(false);
 }
 //<h2 class="card-title">${title}</h5>
 

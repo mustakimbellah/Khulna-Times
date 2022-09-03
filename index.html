@@ -14,19 +14,31 @@
   </head>
   <body>
     <header>
-      <section class="sticky-top">
+      <section class="sticky-top p-2">
         <nav class="navbar navbar-expand-lg">
           <div class="container" style="background-color: #8d5ce8a8">
-            <a class="navbar-brand fw-bolder text-white" href="">
+            <a class="navbar-brand" href="index.html">
               <h1>Khulna Times</h1>
             </a>
+            <!-- Hamburger Icon -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <nav class="navbar-nav ms-auto">
                 <li class="nav-item">
-                  <a class="nav-link fs-4 fw-bolder" href="">News</a>
+                  <a class="nav-link" href="index.html">News</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fs-4 fw-bolder" href="">Blog</a>
+                  <a class="nav-link" href="">Blog</a>
                 </li>
               </nav>
             </div>
@@ -42,10 +54,10 @@
         <div class="container text-center">
           <div
             id="all-menu"
-            class="row row-cols-8 text-black p-2 fw-bold"
+            class="row row-col-8 text-black p-2 fw-bold"
             style="background-color: #9c75e3a8"
           >
-            <!-- <div class="col">Home</div> -->
+            <div class="col">Home</div>
             <!-- <div class="col">Breaking News</div>
                         <div class="col">Regular News</div>
                         <div class="col">International News</div>
@@ -59,7 +71,7 @@
       </section>
 
       <section class="container">
-        <div class="h1 text-center">
+        <div class="h1 text-center mt-2">
           <span id="item-catagory"></span> Items Founds
         </div>
       </section>
