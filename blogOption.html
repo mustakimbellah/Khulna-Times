@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khulna Times</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header>
+      <section class="sticky-top p-2">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container" style="background-color: #8d5ce8a8">
+            <a class="navbar-brand" href="index.html">
+              <h1>Khulna Times</h1>
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <nav class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">News</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="blogOption.html">Blog</a>
+                </li>
+              </nav>
+            </div>
+          </div>
+        </nav>
+      </section>
+    </header>
+
+    <main>
+      <section class="container">
+        <div>
+          <h1>Question-1: Difference between Var,let and Const</h1>
+        </div>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Var</th>
+                <th scope="col">Let</th>
+                <th scope="col">const</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>The scope of a var variable is functional scope.</td>
+                <td>The scope of a let variable is block scope</td>
+                <td>@The scope of a const variable is block scope.</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>It can be updated and re-declared into the scope.</td>
+                <td>
+                  It can be updated but cannot be re-declared into the scope.
+                </td>
+                <td>It cannot be updated or re-declared into the scope.</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>It can be declared without initialization</td>
+                <td>It can be declared without initialization.</td>
+                <td>It cannot be declared without initialization.</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>
+                  It can be accessed without initialization as its default value
+                  is “undefined”.
+                </td>
+                <td>
+                  It cannot be accessed without initialization otherwise it will
+                  give ‘referenceError’.
+                </td>
+                <td>
+                  It cannot be accessed without initialization, as it cannot be
+                  declared without initialization.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="container mt-5">
+        <div>
+          <h1>Question-2: Differences Between Arrow and Regular Functions</h1>
+        </div>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Regular function</th>
+                <th scope="col">Arrow function</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">this value</th>
+                <td>
+                  Inside of a regular JavaScript function, this value (aka the
+                  execution context) is dynamic.
+                </td>
+                <td>
+                  The behavior of this inside of an arrow function differs
+                  considerably from the regular function's this behavior. The
+                  arrow function doesn't define its own execution context
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Constructors</th>
+                <td>
+                  As seen in the previous section, the regular function can
+                  easily construct objects.
+                </td>
+                <td>
+                  A consequence of this resolved lexically is that an arrow
+                  function cannot be used as a constructor.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">arguments object</th>
+                <td>
+                  Inside the body of a regular function, arguments is a special
+                  array-like object containing the list of arguments with which
+                  the function has been invoked.
+                </td>
+                <td>
+                  On the other side, no arguments special keyword is defined
+                  inside an arrow function.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Methods</th>
+                <td>
+                  The regular functions are the usual way to define methods on
+                  classes.
+                </td>
+                <td>
+                  Thanks to Class fields proposal (at this moment at stage 3)
+                  you can use the arrow function as methods inside classes..
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="container mt-5 mb-5">
+        <div>
+          <h1>Question-3: Differences Between map,forEach,filter and find</h1>
+        </div>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">map</th>
+                <th scope="col">forEach</th>
+                <th scope="col">filter</th>
+                <th scope="col">find</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td>
+                  .map() executes the same code on every element in an array and
+                  returns a new array with the updated elements.
+                </td>
+                <td>
+                  .forEach(), is used to execute the same code on every element
+                  in an array but does not change the array and it returns
+                  undefined.
+                </td>
+                <td>The filter() method is used to filter all the elements</td>
+                <td>
+                  The find() method is used to find all the descendant elements
+                  of the selected element.
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row"></th>
+                <td>
+                  map() creates a new array from calling a function for every
+                  array element
+                </td>
+                <td>
+                  The break statement cannot be used because of the callback
+                  function.
+                </td>
+                <td>
+                  The filter() method returns the element that matches and
+                  removes the element that does not match.
+                </td>
+                <td>
+                  The find() method finds the element in the DOM tree by
+                  traversing through the root to the leaf
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row"></th>
+                <td>
+                  map() calls a function once for each element in an array.
+                </td>
+                <td>It is slower than the traditional loop in performance.</td>
+                <td>The filter() method does not change the original array</td>
+                <td>It does not execute the function for empty elements.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
