@@ -1,9 +1,29 @@
 
 const loadAllNews = async () => {
-    const response = await fetch('https://openapi.programming-hero.com/api/news/categories');
-    //console.log(response);
-    const data = await response.json();
-    //console.log(data.data);
-    return data.data;
-}
+    const res = await fetch(`https://openapi.programming-hero.com/api/news/categories`);
+    const data = await res.json();
+    displayCatagories(data.data.news_category)
+        .catch((error) => {
+            throw error;
+        });
+};
+
+const displayCatagories = async (catagories) => {
+    //console.log(loadAllNews());
+
+    const catagoriesContainer = document.getElementById('all-menu');
+    for (const menu of catagories) {
+        //console.log(menu);
+
+        const div = document.createElement('div');
+        div.classList.add('col');
+        div.innerHTML = `
+            <div onclick="newsMenu(${menu.category_id})">${menu.category_name}</div>
+        `;
+
+        catagoriesContainer.appendChild(div);
+    }
+};
+
+
 loadAllNews();
