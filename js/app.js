@@ -59,7 +59,7 @@ function displayNews(data) {
                                 <i class="fa-solid fa-eye me-2"></i> View: ${element.total_view}
                                 </div>
                                 <div>
-                                <button onclick="showAllDetails('${element._id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">Show Detail</button>
+                                <button onclick="showAllDetails('${element._id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Detail</button>
                                 </div>
                             </div>
                         </div>
@@ -71,40 +71,38 @@ function displayNews(data) {
 }
 
 function showAllDetails(news_id) {
-    let url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    let url = `https://openapi.programming-hero.com/api/news/${news_id}`
+    // console.log(url);
     fetch(url)
         .then(res => res.json())
-        .then(data => displayNews(data.data));
-
+        .then(data => display(data.data))
 }
 
-function displayNews(data) {
-    let modalBody = document.getElementById("newsModalLabel")
-    let exampleModalLabel = document.getElementById("modalExamples")
-    modalBody.textContent = " "
+function display(data) {
+    //let modalBody = document.getElementById("exampleModal")
+    let exampleModalLabel = document.getElementById("exampleModalLabel")
+    exampleModalLabel.textContent = " "
     data.forEach(event => {
         //console.log(event);
-        let { details, title, total_view, rating, thumbnail_url, author } = event;
+        let { details, title, total_view, thumbnail_url, author } = event;
         let div = document.createElement('div')
         exampleModalLabel.innerText = title;
         div.innerHTML = `
-      <h2 class="card-title">${title}</h5>
-      <div class = "text-center mt-2 mb-2">
-      <img src ="${thumbnail_url}"/>
-      </div>
-
-      <h5>Author Name : ${author.name ? author.name : "No Name"}</h5>
-      <p>${total_view}</p>
+                <div class = "text-center mt-2 mb-2">
+                <img src ="${thumbnail_url}"/>
+                </div>
+                <p>Details: ${details}</p>
+                <h5 class="text-primary">Author Name : ${author.name ? author.name : "No Name"}</h5>
+                <p class="text-primary">View: ${total_view}</p>
+                
       `;
-        modalBody.appendChild(div)
+        exampleModalLabel.appendChild(div)
     })
-
 }
-
-
+//<h2 class="card-title">${title}</h5>
 
 //displayNews();
 //newsMenu();
 loadAllNews();
-//showAllDetails();
-//displayNews();
+showAllDetails();
+displayNews();
