@@ -43,8 +43,6 @@ function displayNews(data) {
     toggleSpinner(true);
     document.getElementById('item-catagory').innerText = data.length ? data.length : 'No';
 
-
-
     const detailsNews = document.getElementById('all-news');
     detailsNews.innerHTML = '';
     data.forEach((element) => {
