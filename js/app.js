@@ -1,5 +1,6 @@
 
 const loadAllNews = async () => {
+    toggleSpinner(true);
     const res = await fetch(`https://openapi.programming-hero.com/api/news/categories`);
     const data = await res.json();
     displayCatagories(data.data.news_category)
@@ -8,7 +9,7 @@ const loadAllNews = async () => {
         });
 };
 const displayCatagories = async (catagories) => {
-    toggleSpinner(true);
+    //toggleSpinner(true);
 
     const catagoriesContainer = document.getElementById('all-menu');
     for (const menu of catagories) {
@@ -23,13 +24,17 @@ const displayCatagories = async (catagories) => {
     toggleSpinner(false);
 };
 function newsMenu(category_id) {
+    toggleSpinner(true);
     let url = `https://openapi.programming-hero.com/api/news/category/${"0" + category_id}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayNews(data.data));
 }
 function displayNews(data) {
-    toggleSpinner(true);
+    toggleSpinner(false);
+
+    data.sort((a, b) => b.total_view - a.total_view);
+
     document.getElementById('item-catagory').innerText = data.length ? data.length : 'No';
     const detailsNews = document.getElementById('all-news');
     detailsNews.innerHTML = '';
@@ -65,7 +70,7 @@ function displayNews(data) {
         detailsNews.appendChild(div);
     });
 
-    toggleSpinner(false);
+    //toggleSpinner(false);
 }
 
 function showAllDetails(news_id) {
@@ -93,7 +98,7 @@ function display(data) {
         `;
         exampleModalLabel.appendChild(div);
     });
-    //toggleSpinner(false);
+
 }
 
 const toggleSpinner = (isLoading) => {
